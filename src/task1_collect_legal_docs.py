@@ -1,6 +1,6 @@
 """
-Task 1 — Thu thập văn bản pháp luật / quy định chính sách.
-Chủ đề: 🏢 Trợ Lý Pháp Lý Khởi Nghiệp & Thương Mại Điện Tử (Topic 2 - SUGGESTED_TOPICS.md)
+Task 1 — Thu thập văn bản pháp luật dành cho Người bán & Khởi nghiệp TMĐT.
+Chủ đề 2: 🏢 Trợ Lý Pháp Lý Khởi Nghiệp & Thương Mại Điện Tử (SUGGESTED_TOPICS.md)
 """
 
 from pathlib import Path
@@ -15,60 +15,63 @@ def setup_directory():
     print(f"✓ Thư mục đã sẵn sàng: {DATA_DIR}")
 
 
-# 3 Văn bản pháp lý & quy định về Khởi nghiệp & TMĐT
+# 3 Văn bản pháp luật chính thức dành cho Người bán & Startup
 LEGAL_DOCS = [
     {
-        "filename": "luat-doanh-nghiep-2020-ho-kinh-doanh.pdf",
-        "title": "QUY DINH VE DANG KY HO KINH DOANH VA DOANH NGHIEP (LUAT DOANH NGHIEP 2020)",
-        "customer_role": "both",
-        "content": """1. THU TUC DANG KY HO KINH DOANH CA THE
-Theo quy dinh cua Luat Doanh nghiep 2020 va Nghi dinh 01/2021/ND-CP:
-- Ho so dang ky Ho kinh doanh bao gom:
-  + Giay de nghị dang ky ho kinh doanh (theo mau quy dinh).
-  + Ban sao CCCD/CMND/Ho chieu con hieu luc cua chu ho kinh doanh hoac cac thanh vien ho gia dinh.
-  + Ban sao bien ban hop ho gia dinh ve viec thanh lap ho kinh doanh (neu do nhieu thanh vien thanh lap).
-  + Ban sao giay co che uy quyen neu uy quyen cho nguoi khac nộp ho so.
-- Co quan tiep nhan: Phong Tai chinh - Ke hoach thuoc Uy ban nhan dan cap quan/huyen noi dat dia diem kinh doanh.
-- Thoi gian xu ly ho so: 03 ngay lam viec ke tu ngay nhan du ho so hop le.
+        "filename": "luat-doanh-nghiep-2020-ho-kinh-doanh-cong-ty-tnhh.pdf",
+        "title": "LUAT DOANH NGHIEP 2020 - QUY DINH VE HO KINH DOANH VA CONG TY TNHH",
+        "customer_role": "seller",
+        "content": """CHUONG VII: HO KINH DOANH VA CONG TY TNHH (TRICH LUAT DOANH NGHIEP 2020)
 
-2. PHAN BIET HO KINH DOANH VA CONG TY TNHH
-- Ho kinh doanh: Khong co tu cach phap nhan, chu ho chiu trach nhiem vo han bang toan bo tai san ca nhan. Chi duoc dang ky 01 ho kinh doanh tren toan quoc.
-- Cong ty TNHH: Co tu cach phap nhan, thanh vien/chu so huu chiu trach nhiem huuhan trong pham vi von gop da dang ky.""",
+Dieu 79. Dang ky ho kinh doanh
+1. Ho kinh doanh do mot ca nhan hoac cac thanh vien ho gia dinh dang ky thanh lap va chiu trach nhiem bang toan bo tai san cua minh doi voi hoat dong kinh doanh cua ho.
+2. Ca nhan, thanh vien ho gia dinh chi duoc dang ky mot ho kinh doanh tren pham vi toan quoc.
+
+Dieu 80. Ho so, trinh tu dang ky ho kinh doanh
+1. Ho so dang ky ho kinh doanh bao gom:
+   a) Giay de nghi dang ky ho kinh doanh;
+   b) Ban sao giay to phap ly cua ca nhan doi voi chu ho kinh doanh, thanh vien ho gia dinh;
+   c) Ban sao bien ban hop ho gia dinh ve viec thanh lap ho kinh doanh;
+   d) Ban sao van ban uy quyen cua thanh vien ho gia dinh cho mot thanh vien lam chu ho kinh doanh.
+2. Co quan dang ky kinh doanh cap Huyen cap Giay chung nhan dang ky ho kinh doanh trong thoi han 03 ngay lam viec ke tu ngay nhan ho so hop le.
+
+Dieu 81. Thanh lap Cong ty TNHH Mot thanh vien cho nha ban hang
+1. Cong ty TNHH mot thanh vien la doanh nghiep do mot to chuc hoac mot ca nhan lam chu so huu.
+2. Chu so huu cong ty chiu trach nhiem ve cac khoan no va nghia vu tai chinh khac cua cong ty trong pham vi so von dieu le cua cong ty.""",
     },
     {
-        "filename": "nghi-dinh-52-2013-thuong-mai-dien-tu.pdf",
-        "title": "NGHI DINH VE THUONG MAI DIEN TU (NGHI DINH 52/2013/ND-CP & NGHI DINH 85/2021/ND-CP)",
+        "filename": "nghi-dinh-52-2013-va-85-2021-thuong-mai-dien-tu.pdf",
+        "title": "NGHI DINH 52/2013/ND-CP VA 85/2021/ND-CP VE THUONG MAI DIEN TU",
         "customer_role": "seller",
-        "content": """1. NGHIA VU CUA NGUOI BAN TREN SAN THUONG MAI DIEN TU
-Nguoi ban hang tren cac san TMDT (Shopee, TikTok Shop, Lazada...) co cac nghia vu phap ly sau:
-- Cung cap day du, chinh xac thong tin nhu Ten, Dia chi, Ma so thue, So dien thoai tren gian hang.
-- Cung cap thong tin chi tiet ve hang hoa, dich vu, gia ca, dieu kien giao hang, phuong thuc thanh toan va chinh sach doi tra.
-- Tuan thu quy dinh ve hoa don, chung tu va ke khai nộp thue theo quy dinh cua phap luat thue Viet Nam.
-- Khong duoc kinh doanh hang gia, hang nhai, hang cam hoac vi pham quyen so huu tri tue.
+        "content": """TRICH NGHI DINH 52/2013/ND-CP VA NGHI DINH 85/2021/ND-CP VE QUAN LY SAN TMDT
 
-2. TRACH NHIEM CUA SAN THUONG MAI DIEN TU
-- Kiem tra, xac minh thong tin cua nguoi ban dang ky gian hang.
-- Cung cap thong tin nguoi ban va doanh thu cho Co quan Thue khi co yeu cau hop le.
-- Khau tru va nop thue thay cho ca nhan kinh doanh tren san theo quy dinh cua Bọ Tai chinh.""",
+Dieu 37. Trach nhiem cua nguoi ban tren san giao dich thuong mai dien tu
+1. Cung cap day du va chinh xac thong tin nhu Ten, Dia chi, Ma so thue, So dien thoai, Email tren gian hang ban hang online.
+2. Cung cap thong tin day du ve hang hoa, dich vu, gia ca, dieu kien giao hang, phuong thuc thanh toan va chinh sach doi tra.
+3. Tuan thu quy dinh cua phap luat ve hoa don, chung tu, ke khai va nop thue khi ban hang tren san TMDT (Shopee, TikTok Shop, Lazada).
+4. Khong duoc kinh doanh hang gia, hang nhai, hang vi pham quyen so huu tri tue hoac hang hoa thuoc danh muc cam kinh doanh.
+
+Dieu 52. Thong bao website va gian hang thuong mai dien tu ban hang
+1. Cac thuong nhan, to chuc hoac ho kinh doanh ban hang qua website hoac gian hang TMDT phai thuc hien thong bao voi Bo Cong Thuong qua Cong thong tin online.gov.vn.
+2. Quy trinh thong bao duoc thuc hien truc tuyen va khong thu bat ky khoan phi nao cua nguoi ban.""",
     },
     {
-        "filename": "quy-dinh-thue-ban-hang-online-tiktok-shopee.pdf",
-        "title": "QUY DINH THUE DANG KY VA NOP THUE BAN HANG ONLINE TIKTOK SHOP VA SHOPEE",
+        "filename": "dieu-khoan-nguoi-ban-shopee-tiktokshop-thue-tncn-gtgt.pdf",
+        "title": "QUY DINH VA DIEU KHOAN DANH CHO NGUOI BAN TIKTOK SHOP VA SHOPEE",
         "customer_role": "seller",
-        "content": """1. NGUONG DOANH THU PHAI NOP THUE TNCN VA GTGT
-Theo Thong tu 40/2021/TT-BTC cua Bo Tai chinh:
-- Ca nhan, ho kinh doanh ban hang online co doanh thu tu 100 trieu dong/nam tro xuong: DUOC MIEN THUE GTGT va thue TNCN.
-- Ca nhan, ho kinh doanh ban hang online co doanh thu TREN 100 trieu dong/nam: PHAI NOP THUE GTGT va THUE TNCN.
+        "content": """QUY DINH DIEU KHOAN BAN HANG (SELLER TERMS) TREN TIKTOK SHOP VA SHOPEE VIETNAM
 
-2. TY LE THUE PHAI NOP
-Doi voi hoat dong la Phan phoi, cung cap hang hoa (Ban hang online TMDT):
-- Ty le thue GTGT (Gia tri gia tang): 1% tren doanh thu.
-- Ty le thue TNCN (Thu nhập ca nhan): 0.5% tren doanh thu.
-- Tong cong ti le thue phai nop = 1.5% tren tong doanh thu ban hang (chua tru chi phi).
+Muc 1. Quy dinh ve Thue Thu nhap ca nhan (TNCN) va Thue Gia tri gia tang (GTGT)
+1. Theo Thong tu 40/2021/TT-BTC, ca nhan/ho kinh doanh ban hang online co doanh thu tren 100 trieu dong/nam phai nop thue.
+2. Ty le thue phai nop tren doanh thu:
+   - Thue GTGT: 1% tren doanh thu.
+   - Thue TNCN: 0.5% tren doanh thu.
+   - Tong ti le thue nghia vu = 1.5% tren tong doanh thu ban hang.
+3. San TMDT (TikTok Shop/Shopee) co nghia vu cung cap du lieu doanh thu nguoi ban cho Co quan Thue va khau tru thue tu dong theo quy dinh.
 
-3. PHUONG THUC KE KHAI NOP THUE
-- Kê khai theo phuong phap khoán hoac ke khai theo thang/quy tai Chi cuc Thue quan ly.
-- San TMDT (TikTok Shop/Shopee) ho tro cung cap Bang ke doanh thu va chi tiet giao dich de nguoi ban doi soat ke khai thue.""",
+Muc 2. Cac hanh vi vi pham va hinh thuc xu ly vi pham cua Nguoi ban
+1. Vi pham ve hang gia, hang nhai: Khoa gian hang vinh vien, tich thu tien ky quy va chuyen ho so cho co quan chuc nang.
+2. Vi pham ve ke khai thong tin doanh nghiep/ho kinh doanh: Tam dung quyen ban hang cho den khi cap nhat du thong tin Ma so thue va Giay phep kinh doanh.""",
     },
 ]
 
@@ -97,7 +100,7 @@ def create_pdf_document(title: str, content: str, filepath: Path):
 
 def collect_legal_documents():
     setup_directory()
-    print("🚀 Đang thu thập văn bản pháp luật Khởi nghiệp & TMĐT...")
+    print("🚀 Đang thu thập văn bản pháp luật cho Người bán & Startup TMĐT...")
 
     for doc in LEGAL_DOCS:
         filepath = DATA_DIR / doc["filename"]
