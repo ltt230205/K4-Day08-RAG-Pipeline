@@ -1,7 +1,7 @@
-# Bán hàng online trên TikTok Shop và Shopee đạt doanh thu bao nhiêu thì phải nộp thuế?
+# Bán hàng online trên TikTok Shop và Shopee đạt doanh thu bao nhiêu thì phải nộp thuế TNCN và GTGT?
 
 **Source:** https://thuvienphapluat.vn/tu-van-phap-luat/thue-ban-hang-online-tiktok-shopee-34201.html
-**Crawled:** 2026-08-04T14:29:58.613000
+**Crawled:** 2026-08-04T16:08:45.364341
 **Type:** news
 
 ---
@@ -18,7 +18,7 @@ Rất nhiều nhà bán hàng mới khởi nghiệp trên TikTok Shop, Shopee th
 Đối với ngành nghề bán buôn, bán lẻ hàng hóa (bán hàng online):
 - **Thuế giá trị gia tăng (GTGT)**: **1%** tính trên tổng doanh thu.
 - **Thuế thu nhập cá nhân (TNCN)**: **0.5%** tính trên tổng doanh thu.
-- **Tổng cộng**: Người bán phải nộp **1.5%** trên tổng doanh thu bán hàng (chưa trừ chi phí nhập hàng, vận chuyển hay quảng cáo).
+- **Tổng cộng**: Người bán phải nộp **1.5%** trên tổng doanh thu bán hàng (chưa trừ chi phí nhập hàng hay quảng cáo).
 
 ### 3. Cách thức nộp thuế
 Cá nhân có thể đăng ký MST cá nhân kinh doanh, nộp thuế theo phương pháp kê khai định kỳ (hàng quý) hoặc thông qua sự hỗ trợ khấu trừ/cung cấp dữ liệu tự động của sàn TikTok Shop/Shopee.

@@ -12,6 +12,8 @@ Outputs:
 
 import json
 import re
+import xml.etree.ElementTree as ET
+import zipfile
 from pathlib import Path
 
 LANDING_DIR = Path(__file__).parent.parent / "data" / "landing"
@@ -47,6 +49,24 @@ def _extract_readable_fallback(filepath: Path) -> str:
     return text.strip()
 
 
+def _extract_docx_text(filepath: Path) -> str:
+    """Extract text from DOCX using only the Python standard library."""
+    paragraphs = []
+    namespace = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
+
+    with zipfile.ZipFile(filepath) as docx:
+        xml_content = docx.read("word/document.xml")
+
+    root = ET.fromstring(xml_content)
+    for paragraph in root.findall(".//w:p", namespace):
+        texts = [node.text for node in paragraph.findall(".//w:t", namespace) if node.text]
+        paragraph_text = "".join(texts).strip()
+        if paragraph_text:
+            paragraphs.append(paragraph_text)
+
+    return "\n\n".join(paragraphs)
+
+
 def convert_legal_docs():
     """Convert PDF/DOCX files in data/landing/legal/ to Markdown."""
     legal_dir = LANDING_DIR / "legal"
@@ -60,7 +80,9 @@ def convert_legal_docs():
             continue
 
         print(f"Converting: {filepath.name}")
-        if md is None:
+        if filepath.suffix.lower() == ".docx":
+            content = _extract_docx_text(filepath)
+        elif md is None:
             content = _extract_readable_fallback(filepath)
         else:
             try:

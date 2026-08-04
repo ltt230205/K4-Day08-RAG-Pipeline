@@ -1,21 +1,21 @@
-# Tổng hợp các lỗi vi phạm pháp lý khiến gian hàng TikTok Shop và Shopee bị khóa vĩnh viễn
+# Hướng dẫn thông báo gian hàng & website TMĐT với Bộ Công Thương tại online.gov.vn
 
-**Source:** https://seller.tiktok.com/university/article/cac-loi-vi-pham-phap-ly-dieu-khoan-nguoi-ban-tiktok-shop
-**Crawled:** 2026-08-04T14:29:58.615577
+**Source:** https://online.gov.vn/huong-dan-thong-bao-website-gian-hang-tmdt-bo-cong-thuong.html
+**Crawled:** 2026-08-04T16:08:45.367036
 **Type:** news
 
 ---
 
-# Các lỗi vi phạm pháp lý dẫn đến bị khóa gian hàng trên TikTok Shop và Shopee
+# Hướng dẫn thông báo website và gian hàng TMĐT với Bộ Công Thương
 
-Nhà bán hàng online cần đặc biệt lưu ý các quy định pháp luật và chính sách sàn để tránh bị điểm phạt (Jusdiction Points) hoặc khóa shop vĩnh viễn:
+Theo Nghị định 52/2013/NĐ-CP và Nghị định 85/2021/NĐ-CP của Chính phủ:
 
-### 1. Bán hàng giả, hàng nhái, vi phạm sở hữu trí tuệ
-- Đăng bán các sản phẩm nhái thương hiệu lớn (Nike, Adidas, Chanel...) khi không có giấy ủy quyền chính hãng.
-- **Hậu quả**: Khóa sản phẩm lập tức, tịch thu tiền ký quỹ và khóa gian hàng vĩnh viễn, đồng thời có thể bị xử lý hình sự/xử phạt hành chính từ 10 - 50 triệu đồng.
+### 1. Đối tượng bắt buộc phải thông báo
+- Các doanh nghiệp, thương nhân hoặc hộ kinh doanh sở hữu website bán hàng trực tiếp.
+- Gian hàng của doanh nghiệp/hộ kinh doanh trên các sàn giao dịch thương mại điện tử lớn.
 
-### 2. Kinh doanh hàng hóa thuộc danh mục cấm
-- Thực phẩm chức năng không có giấy công bố sản phẩm, mỹ phẩm không có số công bố, thuốc chữa bệnh, vũ khí, chất cháy nổ.
-
-### 3. Trốn thuế và gian lận hóa đơn
-- Không cung cấp mã số thuế cho sàn hoặc cố tình khai gian dối doanh thu nhằm trốn thuế TNCN/GTGT.
+### 2. Các bước thực hiện trực tuyến (Miễn phí 100%)
+1. Truy cập Cổng thông tin Quản lý hoạt động thương mại điện tử của Bộ Công Thương tại địa chỉ `online.gov.vn`.
+2. Đăng ký tài khoản doanh nghiệp/hộ kinh doanh bằng Mã số thuế.
+3. Kê khai thông tin website/gian hàng và nộp bản scan Giấy đăng ký kinh doanh.
+4. Bộ Công Thương xét duyệt trong 3 ngày làm việc và cấp Logo "Đã thông báo Bộ Công Thương" để gắn lên trang.
