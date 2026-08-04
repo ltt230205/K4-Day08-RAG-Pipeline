@@ -6,6 +6,7 @@ Run:
 """
 
 import hashlib
+import json
 import math
 import os
 from pathlib import Path
@@ -188,7 +189,27 @@ def index_to_vectorstore(chunks: list[dict]):
     try:
         import chromadb
     except ImportError as exc:
-        raise RuntimeError("Missing dependency chromadb. Install it with: pip install chromadb") from exc
+        print(f"Warning: chromadb is not installed: {exc}")
+        print("Writing fallback local index to chroma_db/fallback_index.json.")
+        CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+        fallback_path = CHROMA_DIR / "fallback_index.json"
+        fallback_path.write_text(
+            json.dumps(
+                [
+                    {
+                        "id": _make_chroma_id(chunk),
+                        "content": chunk["content"],
+                        "metadata": chunk["metadata"],
+                        "embedding": chunk["embedding"],
+                    }
+                    for chunk in chunks
+                ],
+                ensure_ascii=False,
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+        return
 
     CHROMA_DIR.mkdir(parents=True, exist_ok=True)
     client = chromadb.PersistentClient(path=str(CHROMA_DIR))
