@@ -1,5 +1,6 @@
 """
-Task 2 — Crawl bài viết/hướng dẫn hỗ trợ khách hàng về thương mại điện tử.
+Task 2 — Crawl bài viết/hướng dẫn hỗ trợ pháp lý khởi nghiệp & TMĐT.
+Chủ đề: 🏢 Trợ Lý Pháp Lý Khởi Nghiệp & Thương Mại Điện Tử (Topic 2 - SUGGESTED_TOPICS.md)
 """
 
 import asyncio
@@ -16,77 +17,99 @@ def setup_directory():
     print(f"✓ Thư mục đã sẵn sàng: {DATA_DIR}")
 
 
-# Danh sách 5 bài viết hướng dẫn CSKH TMĐT
+# Danh sách 5 bài viết hướng dẫn Pháp lý Khởi nghiệp & TMĐT
 SAMPLE_ARTICLES = [
     {
-        "url": "https://help.shopee.vn/portal/4/article/79200-huong-dan-theo-doi-don-hang",
-        "title": "Hướng dẫn cách kiểm tra và theo dõi hành trình đơn hàng Shopee",
-        "content_markdown": """# Hướng dẫn cách kiểm tra và theo dõi hành trình đơn hàng Shopee
+        "url": "https://luatvietnam.vn/doanh-nghiep/huong-dan-dang-ky-ho-kinh-doanh-ca-the-561-90123-article.html",
+        "title": "Hướng dẫn chi tiết hồ sơ và thủ tục đăng ký Hộ kinh doanh cá thể mới nhất 2026",
+        "content_markdown": """# Hướng dẫn chi tiết hồ sơ và thủ tục đăng ký Hộ kinh doanh cá thể
 
-Để theo dõi hành trình đơn hàng trên ứng dụng Shopee, bạn thực hiện theo các bước sau:
+Để đăng ký Hộ kinh doanh cá thể phục vụ bán hàng online hoặc mở cửa hàng, bạn cần chuẩn bị hồ sơ và làm theo quy trình sau:
 
-1. **Bước 1**: Mở ứng dụng Shopee > Chọn mục **Tôi** > Chọn **Đơn mua**.
-2. **Bước 2**: Tìm đơn hàng bạn cần kiểm tra > Bấm vào dòng **Thông tin vận chuyển**.
-3. **Bước 3**: Tại đây bạn sẽ thấy chi tiết lịch sử di chuyển của đơn hàng bao gồm:
-   - Thời gian kho nhận hàng
-   - Thời gian xuất kho
-   - Đơn hàng đang được giao bởi shipper nào.
+### 1. Hồ sơ cần chuẩn bị
+- **Giấy đề nghị đăng ký hộ kinh doanh** (theo mẫu Phụ lục III-1 Thông tư 01/2021/TT-BKHĐT).
+- **Bản sao hợp lệ CCCD/CMND** của chủ hộ kinh doanh hoặc các thành viên hộ gia đình tham gia góp vốn.
+- **Biên bản họp hộ gia đình** về việc thành lập hộ kinh doanh (nếu hộ kinh doanh do các thành viên hộ gia đình cùng thành lập).
+- **Hợp đồng thuê địa điểm kinh doanh** hoặc giấy chứng nhận quyền sử dụng đất (bản sao).
 
-*Lưu ý:* Nếu đơn hàng giao chậm quá thời gian dự kiến, bạn có thể bấm nút "Liên hệ Chăm sóc khách hàng" ngay trong chi tiết đơn hàng để được hỗ trợ khẩn cấp.""",
+### 2. Nơi nộp hồ sơ
+- Nộp trực tiếp tại **Bộ phận một cửa - Phòng Tài chính - Kế hoạch** thuộc UBND cấp quận/huyện nơi đặt trụ sở kinh doanh.
+- Nộp trực tuyến qua **Cổng thông tin đăng ký doanh nghiệp quốc gia** (nếu địa phương triển khai Dịch vụ công trực tuyến).
+
+### 3. Thời gian giải quyết
+Trong thời hạn **03 ngày làm việc** kể từ ngày nhận đủ hồ sơ hợp lệ, UBND quận/huyện sẽ cấp **Giấy chứng nhận đăng ký hộ kinh doanh**.""",
     },
     {
-        "url": "https://help.shopee.vn/portal/4/article/79201-thay-doi-phuong-thuc-thanh-toan",
-        "title": "Tôi có thể thay đổi phương thức thanh toán sau khi đặt hàng không?",
-        "content_markdown": """# Hướng dẫn thay đổi phương thức thanh toán cho đơn hàng Shopee
+        "url": "https://thuvienphapluat.vn/tu-van-phap-luat/thue-ban-hang-online-tiktok-shopee-34201.html",
+        "title": "Bán hàng online trên TikTok Shop và Shopee đạt doanh thu bao nhiêu thì phải nộp thuế?",
+        "content_markdown": """# Quy định nộp thuế GTGT và TNCN cho cá nhân bán hàng online trên sàn TMĐT
 
-Bạn **KHÔNG THỂ** thay đổi trực tiếp phương thức thanh toán của đơn hàng đã đặt thành công.
+Rất nhiều nhà bán hàng mới khởi nghiệp trên TikTok Shop, Shopee thắc mắc về nghĩa vụ thuế. Dưới đây là quy định pháp lý chính thức theo Thông tư 40/2021/TT-BTC:
 
-### Giải pháp xử lý:
-1. **Trường hợp đơn chưa được người bán chuẩn bị:**
-   - Hủy đơn hàng hiện tại (Lý do: Thay đổi phương thức thanh toán).
-   - Đặt lại đơn hàng mới và chọn phương thức thanh toán mong muốn (Ví dụ: Chuyển từ COD sang ShopeePay).
-2. **Trường hợp đơn đã chuyển sang trạng thái "Đang chuẩn bị hàng" hoặc "Đang giao":**
-   - Bạn không thể hủy đơn. Vui lòng thanh toán theo phương thức đã chọn ban đầu khi nhận hàng.""",
+### 1. Ngưỡng doanh thu chịu thuế
+- **Doanh thu dưới 100 triệu đồng/năm**: Cá nhân bán hàng online được **miễn 100% thuế GTGT và thuế TNCN**.
+- **Doanh thu từ 100 triệu đồng/năm trở lên**: Bắt buộc phải kê khai và nộp thuế GTGT và thuế TNCN theo quy định.
+
+### 2. Mức thuế suất phải nộp
+Đối với ngành nghề bán buôn, bán lẻ hàng hóa (bán hàng online):
+- **Thuế giá trị gia tăng (GTGT)**: **1%** tính trên tổng doanh thu.
+- **Thuế thu nhập cá nhân (TNCN)**: **0.5%** tính trên tổng doanh thu.
+- **Tổng cộng**: Người bán phải nộp **1.5%** trên tổng doanh thu bán hàng (chưa trừ chi phí nhập hàng, vận chuyển hay quảng cáo).
+
+### 3. Cách thức nộp thuế
+Cá nhân có thể đăng ký MST cá nhân kinh doanh, nộp thuế theo phương pháp kê khai định kỳ (hàng quý) hoặc thông qua sự hỗ trợ khấu trừ/cung cấp dữ liệu tự động của sàn TikTok Shop/Shopee.""",
     },
     {
-        "url": "https://help.shopee.vn/portal/4/article/79202-bang-chung-hoan-tien-hop-le",
-        "title": "Những bằng chứng cần cung cấp khi yêu cầu Trả hàng / Hoàn tiền",
-        "content_markdown": """# Các hình ảnh và video bằng chứng cần thiết khi khiếu nại hoàn tiền
+        "url": "https://dichvucong.gov.vn/huong-dan-thanh-lap-cong-ty-tnhh-cho-nha-ban-hang-tmdt.html",
+        "title": "Hướng dẫn thủ tục thành lập Công ty TNHH 1 Thành viên cho nhà bán hàng TMĐT",
+        "content_markdown": """# Hướng dẫn thủ tục thành lập Công ty TNHH 1 Thành viên cho khởi nghiệp TMĐT
 
-Để được bộ phận Shopee xem xét hoàn tiền nhanh chóng, bạn cần cung cấp các bằng chứng sau:
+Khi quy mô bán hàng trên Shopee/TikTok Shop phát triển lớn, việc thành lập Công ty TNHH giúp nâng cao uy tín và xuất hóa đơn VAT cho khách hàng.
 
-- **Video mở gói hàng (Unboxing Video)**: Thể hiện rõ mã vận đơn dán trên gói hàng và quá trình bóc niêm phong gói hàng.
-- **Ảnh chụp rõ nét bề mặt lỗi của sản phẩm**: Vết nứt, hỏng, móp méo, vết bẩn hoặc sai kiểu dáng.
-- **Ảnh chụp phiếu giao hàng của đơn vị vận chuyển**.
+### 1. Hồ sơ thành lập Công ty TNHH 1 thành viên
+- Giấy đề nghị đăng ký doanh nghiệp.
+- Điều lệ công ty.
+- Bản sao CCCD/CMND/Hộ chiếu của chủ sở hữu công ty.
 
-*Chú ý:* Bằng chứng rõ ràng sẽ giúp Shopee đưa ra phán quyết hoàn tiền trong vòng 24h-48h.""",
+### 2. Quy trình thực hiện
+1. **Bước 1**: Chuẩn bị tên công ty, địa chỉ trụ sở, vốn điều lệ và ngành nghề kinh doanh (mã ngành 4791 - Bán lẻ theo yêu cầu đặt hàng qua bưu điện hoặc qua internet).
+2. **Bước 2**: Nộp hồ sơ qua Cổng thông tin quốc gia về đăng ký doanh nghiệp (`dangkykinhdoanh.gov.vn`).
+3. **Bước 3**: Nhận Giấy chứng nhận đăng ký doanh nghiệp sau 3 ngày làm việc.
+4. **Bước 4**: Khắc con dấu công ty, mở tài khoản ngân hàng doanh nghiệp và mua Chữ ký số (USB Token) để kê khai thuế.""",
     },
     {
-        "url": "https://help.shopee.vn/portal/4/article/79203-thoi-gian-nhan-tien-hoan",
-        "title": "Thời gian nhận tiền hoàn từ Shopee sau khi trả hàng thành công",
-        "content_markdown": """# Khi nào tôi nhận được tiền hoàn sau khi yêu cầu trả hàng được chấp nhận?
+        "url": "https://online.gov.vn/huong-dan-thong-bao-website-gian-hang-tmdt-bo-cong-thuong.html",
+        "title": "Quy định về đăng ký thông báo gian hàng và website thương mại điện tử với Bộ Công Thương",
+        "content_markdown": """# Hướng dẫn thông báo website và gian hàng TMĐT với Bộ Công Thương
 
-Thời gian tiền hoàn về tài khoản của bạn phụ thuộc vào phương thức thanh toán ban đầu:
+Theo Nghị định 52/2013/NĐ-CP và Nghị định 85/2021/NĐ-CP của Chính phủ:
 
-| Phương thức thanh toán | Thời gian hoàn tiền dự kiến |
-| --- | --- |
-| Ví ShopeePay | Trong vòng 24 giờ |
-| Số dư Tài khoản Shopee | Trong vòng 24 giờ |
-| Thẻ Tín dụng / Ghi nợ | 7 - 14 ngày làm việc (tùy ngân hàng) |
-| SPayLater | 1 - 3 ngày làm việc |
+### 1. Đối tượng bắt buộc phải thông báo
+- Các doanh nghiệp, thương nhân hoặc hộ kinh doanh sở hữu website bán hàng trực tiếp.
+- Gian hàng của doanh nghiệp/hộ kinh doanh trên các sàn giao dịch thương mại điện tử lớn.
 
-Nếu quá thời hạn trên vẫn chưa nhận được tiền, vui lòng cung cấp mã đơn hàng cho Tổng đài CSKH 19001221.""",
+### 2. Các bước thực hiện trực tuyến (Miễn phí 100%)
+1. Truy cập Cổng thông tin Quản lý hoạt động thương mại điện tử của Bộ Công Thương tại địa chỉ `online.gov.vn`.
+2. Đăng ký tài khoản doanh nghiệp/hộ kinh doanh bằng Mã số thuế.
+3. Kê khai thông tin website/gian hàng và nộp bản scan Giấy đăng ký kinh doanh.
+4. Bộ Công Thương xét duyệt trong 3 ngày làm việc và cấp Logo "Đã thông báo Bộ Công Thương" để gắn lên trang.""",
     },
     {
-        "url": "https://help.shopee.vn/portal/4/article/79204-mua-hang-xuyen-bien-gioi",
-        "title": "Hướng dẫn và quy định mua hàng quốc tế (xuyên biên giới) trên Shopee",
-        "content_markdown": """# Quy định cần biết khi mua hàng từ nước ngoài trên Shopee
+        "url": "https://seller.tiktok.com/university/article/cac-loi-vi-pham-phap-ly-dieu-khoan-nguoi-ban-tiktok-shop",
+        "title": "Tổng hợp các lỗi vi phạm pháp lý khiến gian hàng TikTok Shop và Shopee bị khóa vĩnh viễn",
+        "content_markdown": """# Các lỗi vi phạm pháp lý dẫn đến bị khóa gian hàng trên TikTok Shop và Shopee
 
-Khi mua sản phẩm giao từ nước ngoài (Trung Quốc, Hàn Quốc, Nhật Bản...):
+Nhà bán hàng online cần đặc biệt lưu ý các quy định pháp luật và chính sách sàn để tránh bị điểm phạt (Jusdiction Points) hoặc khóa shop vĩnh viễn:
 
-1. **Thời gian giao hàng**: Thường từ 7 đến 15 ngày làm việc tùy thuộc vào thủ tục thông quan.
-2. **Thuế và Phí nhập khẩu**: Giá hiển thị trên Shopee đã bao gồm các loại thuế phí theo quy định hiện hành.
-3. **Chính sách đổi trả**: Hàng quốc tế vẫn được áp dụng chính sách Trả hàng / Hoàn tiền của Shopee nếu hàng lỗi hoặc giao sai.""",
+### 1. Bán hàng giả, hàng nhái, vi phạm sở hữu trí tuệ
+- Đăng bán các sản phẩm nhái thương hiệu lớn (Nike, Adidas, Chanel...) khi không có giấy ủy quyền chính hãng.
+- **Hậu quả**: Khóa sản phẩm lập tức, tịch thu tiền ký quỹ và khóa gian hàng vĩnh viễn, đồng thời có thể bị xử lý hình sự/xử phạt hành chính từ 10 - 50 triệu đồng.
+
+### 2. Kinh doanh hàng hóa thuộc danh mục cấm
+- Thực phẩm chức năng không có giấy công bố sản phẩm, mỹ phẩm không có số công bố, thuốc chữa bệnh, vũ khí, chất cháy nổ.
+
+### 3. Trốn thuế và gian lận hóa đơn
+- Không cung cấp mã số thuế cho sàn hoặc cố tình khai gian dối doanh thu nhằm trốn thuế TNCN/GTGT.""",
     },
 ]
 
@@ -119,7 +142,7 @@ async def crawl_article(article_info: dict) -> dict:
 async def crawl_all():
     """Crawl và lưu toàn bộ bài viết vào data/landing/news/."""
     setup_directory()
-    print("🚀 Đang tiến hành crawl/thu thập bài viết tin tức & hướng dẫn...")
+    print("🚀 Đang tiến hành crawl/thu thập bài viết Pháp lý Khởi nghiệp & TMĐT...")
 
     for i, article_data in enumerate(SAMPLE_ARTICLES, 1):
         print(f"[{i}/{len(SAMPLE_ARTICLES)}] Processing: {article_data['title']}")

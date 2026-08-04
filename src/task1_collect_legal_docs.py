@@ -1,9 +1,9 @@
 """
-Task 1 — Thu thập văn bản chính sách thương mại điện tử / hỗ trợ khách hàng.
+Task 1 — Thu thập văn bản pháp luật / quy định chính sách.
+Chủ đề: 🏢 Trợ Lý Pháp Lý Khởi Nghiệp & Thương Mại Điện Tử (Topic 2 - SUGGESTED_TOPICS.md)
 """
 
 from pathlib import Path
-import urllib.request
 from fpdf import FPDF
 
 DATA_DIR = Path(__file__).parent.parent / "data" / "landing" / "legal"
@@ -15,59 +15,60 @@ def setup_directory():
     print(f"✓ Thư mục đã sẵn sàng: {DATA_DIR}")
 
 
-# Danh sách 3 chính sách mẫu TMĐT (Shopee Vietnam) - Định dạng chuẩn không lỗi phông
+# 3 Văn bản pháp lý & quy định về Khởi nghiệp & TMĐT
 LEGAL_DOCS = [
     {
-        "filename": "returns-refund-policy-shopee.pdf",
-        "title": "CHINH SACH TRA HANG VA HOAN TIEN SHOPEE",
-        "customer_role": "buyer",
-        "content": """1. DIEU KIEN AP DUNG TRA HANG / HOAN TIEN
-Shopee quy dinh Nguoi mua co the yeu cau tra hang va hoan tien trong cac truong hop sau:
-- Nguoi mua da thanh toan nhung khong nhan duoc san pham, hoac san pham bi mat trong qua trinh van chuyen.
-- San pham bi loi hoac bi hu hai trong qua trinh van chuyen.
-- Nguoi ban giao sai san pham cho Nguoi mua (vi du: sai kich co, sai mau sac, v.v.).
-- San pham Nguoi mua nhan duoc khac biet mot cach ro ret so voi thong tin ma Nguoi ban cung cap trong muc mo ta san pham.
+        "filename": "luat-doanh-nghiep-2020-ho-kinh-doanh.pdf",
+        "title": "QUY DINH VE DANG KY HO KINH DOANH VA DOANH NGHIEP (LUAT DOANH NGHIEP 2020)",
+        "customer_role": "both",
+        "content": """1. THU TUC DANG KY HO KINH DOANH CA THE
+Theo quy dinh cua Luat Doanh nghiep 2020 va Nghi dinh 01/2021/ND-CP:
+- Ho so dang ky Ho kinh doanh bao gom:
+  + Giay de nghị dang ky ho kinh doanh (theo mau quy dinh).
+  + Ban sao CCCD/CMND/Ho chieu con hieu luc cua chu ho kinh doanh hoac cac thanh vien ho gia dinh.
+  + Ban sao bien ban hop ho gia dinh ve viec thanh lap ho kinh doanh (neu do nhieu thanh vien thanh lap).
+  + Ban sao giay co che uy quyen neu uy quyen cho nguoi khac nộp ho so.
+- Co quan tiep nhan: Phong Tai chinh - Ke hoach thuoc Uy ban nhan dan cap quan/huyen noi dat dia diem kinh doanh.
+- Thoi gian xu ly ho so: 03 ngay lam viec ke tu ngay nhan du ho so hop le.
 
-2. THOI GIAN GUI YEU CAU HOAN TIEN
-Nguoi mua me can gui yeu cau tra hang/hoan tien trong vong 03-07 ngay ke tu khi don hang cap nhat trang thai "Giao hang thanh cong".
-
-3. BANG CHUNG CAN CUNG CAP
-- Hinh anh/Video mo hop san pham (unboxing video).
-- Hinh anh phieu giao hang co ma van don.
-- Hinh anh chi tiet loi/hu hong cua san pham.""",
+2. PHAN BIET HO KINH DOANH VA CONG TY TNHH
+- Ho kinh doanh: Khong co tu cach phap nhan, chu ho chiu trach nhiem vo han bang toan bo tai san ca nhan. Chi duoc dang ky 01 ho kinh doanh tren toan quoc.
+- Cong ty TNHH: Co tu cach phap nhan, thanh vien/chu so huu chiu trach nhiem huuhan trong pham vi von gop da dang ky.""",
     },
     {
-        "filename": "payment-methods-shopee.pdf",
-        "title": "QUY DINH VE PHUONG THUC THANH TOAN SHOPEE",
-        "customer_role": "both",
-        "content": """1. CAC PHUONG THUC THANH TOAN DUOC CHAP NHAN
-Shopee ho tro cac phuong thuc thanh toan an toan sau:
-- Vi ShopeePay (Thanh toan truc tiep qua lien ket ngan hang).
-- The Tin dung / Ghi no (Visa, Mastercard, JCB).
-- Thanh toan khi nhan hang (COD - Cash on Delivery).
-- Chuyen khoan ngan hang (QR Code / Bank Transfer).
-- SPayLater (Thanh toan sau / Tra gop).
+        "filename": "nghi-dinh-52-2013-thuong-mai-dien-tu.pdf",
+        "title": "NGHI DINH VE THUONG MAI DIEN TU (NGHI DINH 52/2013/ND-CP & NGHI DINH 85/2021/ND-CP)",
+        "customer_role": "seller",
+        "content": """1. NGHIA VU CUA NGUOI BAN TREN SAN THUONG MAI DIEN TU
+Nguoi ban hang tren cac san TMDT (Shopee, TikTok Shop, Lazada...) co cac nghia vu phap ly sau:
+- Cung cap day du, chinh xac thong tin nhu Ten, Dia chi, Ma so thue, So dien thoai tren gian hang.
+- Cung cap thong tin chi tiet ve hang hoa, dich vu, gia ca, dieu kien giao hang, phuong thuc thanh toan va chinh sach doi tra.
+- Tuan thu quy dinh ve hoa don, chung tu va ke khai nộp thue theo quy dinh cua phap luat thue Viet Nam.
+- Khong duoc kinh doanh hang gia, hang nhai, hang cam hoac vi pham quyen so huu tri tue.
 
-2. QUY DINH HOAN TIEN THEO PHUONG THUC THANH TOAN
-- COD / Chuyen khoan: Hoan tien ve So du Tai khoan Shopee / Vi ShopeePay trong 24h.
-- The tin dung/ghi no: Hoan tien truc tiep vao the trong 7-14 ngay lam viec tuy ngan hang phat hanh.
-- SPayLater: Hoan han muc kha dung ngay khi don hang hoan tat thu tuc huy/tra hang.""",
+2. TRACH NHIEM CUA SAN THUONG MAI DIEN TU
+- Kiem tra, xac minh thong tin cua nguoi ban dang ky gian hang.
+- Cung cap thong tin nguoi ban va doanh thu cho Co quan Thue khi co yeu cau hop le.
+- Khau tru va nop thue thay cho ca nhan kinh doanh tren san theo quy dinh cua Bọ Tai chinh.""",
     },
     {
-        "filename": "privacy-policy-shopee.pdf",
-        "title": "CHINH SACH BAO MAT THONG TIN NGUOI DUNG",
-        "customer_role": "both",
-        "content": """1. MUC DICH THU THAP DU LIEU
-Shopee thu thap thong tin ca nhan cua nguoi dung de:
-- Xu ly don hang va giao hang dung dia chi.
-- Cung cap dich vu cham soc khach hang va giai quyet tranh chap.
-- Xac thuc danh tinh nguoi dung va ngan ngua hanh vi gian luan.
+        "filename": "quy-dinh-thue-ban-hang-online-tiktok-shopee.pdf",
+        "title": "QUY DINH THUE DANG KY VA NOP THUE BAN HANG ONLINE TIKTOK SHOP VA SHOPEE",
+        "customer_role": "seller",
+        "content": """1. NGUONG DOANH THU PHAI NOP THUE TNCN VA GTGT
+Theo Thong tu 40/2021/TT-BTC cua Bo Tai chinh:
+- Ca nhan, ho kinh doanh ban hang online co doanh thu tu 100 trieu dong/nam tro xuong: DUOC MIEN THUE GTGT va thue TNCN.
+- Ca nhan, ho kinh doanh ban hang online co doanh thu TREN 100 trieu dong/nam: PHAI NOP THUE GTGT va THUE TNCN.
 
-2. BAO VE THONG TIN CA NHAN
-Chung toi ap dung cac bien phap bao mat ky thuat va to chuc phu hop de bao ve du lieu ca nhan cua nguoi dung khong bi truy cap, thu thap, su dung, tiet lo hoac huy hoai trai phep.
+2. TY LE THUE PHAI NOP
+Doi voi hoat dong la Phan phoi, cung cap hang hoa (Ban hang online TMDT):
+- Ty le thue GTGT (Gia tri gia tang): 1% tren doanh thu.
+- Ty le thue TNCN (Thu nhập ca nhan): 0.5% tren doanh thu.
+- Tong cong ti le thue phai nop = 1.5% tren tong doanh thu ban hang (chua tru chi phi).
 
-3. QUYEN CUA NGUOI DUNG
-Nguoi dung co quyen kiem tra, cap nhat, dieu chinh hoac yeu cau xoa bo thong tin ca nhan cua minh bang cach dang nhap vao tai khoan ca nhan tren ung dung Shopee.""",
+3. PHUONG THUC KE KHAI NOP THUE
+- Kê khai theo phuong phap khoán hoac ke khai theo thang/quy tai Chi cuc Thue quan ly.
+- San TMDT (TikTok Shop/Shopee) ho tro cung cap Bang ke doanh thu va chi tiet giao dich de nguoi ban doi soat ke khai thue.""",
     },
 ]
 
@@ -96,7 +97,7 @@ def create_pdf_document(title: str, content: str, filepath: Path):
 
 def collect_legal_documents():
     setup_directory()
-    print("🚀 Đang thu thập/tạo văn bản pháp luật TMĐT...")
+    print("🚀 Đang thu thập văn bản pháp luật Khởi nghiệp & TMĐT...")
 
     for doc in LEGAL_DOCS:
         filepath = DATA_DIR / doc["filename"]
