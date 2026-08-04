@@ -14,6 +14,20 @@ from src.task8_pageindex_vectorless import pageindex_search
 SCORE_THRESHOLD = 0.3
 DEFAULT_TOP_K = 5
 RERANK_METHOD = "rrf"
+ENABLE_QUERY_EXPANSION = True
+
+QUERY_EXPANSION_TERMS = {
+    "thanh toán": ["payment methods", "ShopeePay", "COD", "thẻ tín dụng", "chuyển khoản"],
+    "payment": ["phương thức thanh toán", "ShopeePay", "COD", "credit card"],
+    "hoàn tiền": ["refund", "return refund policy", "bằng chứng hoàn tiền"],
+    "trả hàng": ["return", "returns refund", "đổi trả", "hoàn tiền"],
+    "thuế": ["tax", "GTGT", "TNCN", "doanh thu 100 triệu"],
+    "hộ kinh doanh": ["đăng ký hộ kinh doanh", "hồ sơ", "UBND quận huyện"],
+    "người bán": ["seller", "product listing", "quy định đăng bán"],
+    "seller": ["người bán", "listing regulations", "prohibited products"],
+    "đơn hàng": ["order tracking", "theo dõi đơn hàng", "vận chuyển"],
+    "privacy": ["quyền riêng tư", "dữ liệu cá nhân", "privacy policy"],
+}
 
 
 def _normalize_result(item: dict, source: str) -> dict:
@@ -38,6 +52,42 @@ def _dedupe_by_content(results: list[dict]) -> list[dict]:
     return deduped
 
 
+def expand_query(query: str, max_expansions: int = 3) -> list[str]:
+    """
+    Query Expansion bonus: add bilingual/domain variants for stronger retrieval.
+
+    This is intentionally deterministic so the pipeline can run without spending
+    extra LLM calls during tests or demo setup.
+    """
+    normalized = query.lower()
+    expansions = [query]
+
+    for trigger, variants in QUERY_EXPANSION_TERMS.items():
+        if trigger in normalized:
+            for variant in variants:
+                expanded = f"{query} {variant}"
+                if expanded not in expansions:
+                    expansions.append(expanded)
+                if len(expansions) >= max_expansions + 1:
+                    return expansions
+
+    return expansions
+
+
+def generate_hypothetical_document(query: str) -> str:
+    """
+    HyDE-lite bonus: create a short hypothetical support answer and retrieve with it.
+
+    Real HyDE uses an LLM. This local version keeps the same idea while staying
+    deterministic and safe for offline testing.
+    """
+    return (
+        "Tài liệu hỗ trợ khách hàng thương mại điện tử liên quan đến câu hỏi: "
+        f"{query}. Nội dung có thể đề cập chính sách thanh toán, đổi trả, hoàn tiền, "
+        "quy định người bán, thuế, đăng ký kinh doanh, quyền riêng tư hoặc theo dõi đơn hàng."
+    )
+
+
 def retrieve(
     query: str,
     top_k: int = DEFAULT_TOP_K,
@@ -52,8 +102,17 @@ def retrieve(
     if not query or top_k <= 0:
         return []
 
-    dense_results = semantic_search(query, top_k=top_k * 2)
-    sparse_results = lexical_search(query, top_k=top_k * 2)
+    search_queries = expand_query(query) if ENABLE_QUERY_EXPANSION else [query]
+    hyde_query = generate_hypothetical_document(query)
+
+    dense_pool = []
+    sparse_pool = []
+    for search_query in [*search_queries, hyde_query]:
+        dense_pool.extend(semantic_search(search_query, top_k=top_k * 2))
+        sparse_pool.extend(lexical_search(search_query, top_k=top_k * 2))
+
+    dense_results = _dedupe_by_content(dense_pool)[: top_k * 2]
+    sparse_results = _dedupe_by_content(sparse_pool)[: top_k * 2]
 
     best_dense_score = dense_results[0]["score"] if dense_results else 0.0
     if best_dense_score < score_threshold:

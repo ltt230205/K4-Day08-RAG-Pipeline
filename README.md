@@ -559,11 +559,11 @@ run_dashboard()
 
 | Thành viên | MSSV | Nhiệm vụ | Trạng thái |
 |-----------|------|----------|------------|
-| Lê Trí Tùng | 2A202601458 | Task 9: Retrieval Pipeline; Task 10: Generation có Citation; điều phối tích hợp | In progress |
+| Lê Trí Tùng | 2A202601458 | Task 9: Retrieval Pipeline; Task 10: Generation có Citation; điều phối tích hợp | Done |
 | Vũ Xuân Anh | 2A202602010 | Task 1: Thu thập tài liệu; Task 2: Crawl bài viết | Done |
-| Nguyễn Quốc Bảo | 2A202601726 | Task 3: Convert Markdown; Task 4: Chunking & Indexing | In progress |
-| Đỗ Thị Thanh Loan | 2A202601654 | Task 5: Semantic Search; Task 6: Lexical Search BM25 | In progress |
-| Nguyễn Thuỳ Trang | 2A202601294 | Task 7: Reranking; Task 8: PageIndex Fallback | In progress |
+| Nguyễn Quốc Bảo | 2A202601726 | Task 3: Convert Markdown; Task 4: Chunking & Indexing | Done |
+| Đỗ Thị Thanh Loan | 2A202601654 | Task 5: Semantic Search; Task 6: Lexical Search BM25 | Done |
+| Nguyễn Thuỳ Trang | 2A202601294 | Task 7: Reranking; Task 8: PageIndex Fallback | Done |
 
 ---
 
@@ -658,6 +658,16 @@ Chấm bằng automated test suite (`pytest tests/ -v`). Mỗi task có test ri�
 | Deploy chatbot online (Hugging Face Spaces / Render / ...) | 4 |
 | Conversation memory (multi-turn chat) | 3 |
 | UI/UX chất lượng (hiển thị source, score, highlight) | 3 |
+
+### Bonus nhóm đã hoàn thiện
+
+| Bonus | Trạng thái | Minh chứng |
+|-------|------------|------------|
+| Giải thích lexical search/BM25 | Done | `src/task6_lexical_search.py` có BM25 fallback tự implement, giải thích TF/IDF, k1, b và length normalization. |
+| Query Expansion / HyDE-lite | Done | `src/task9_retrieval_pipeline.py` có `expand_query()` và `generate_hypothetical_document()` trước khi hybrid retrieval. |
+| Conversation memory | Done | `app.py` truyền lịch sử chat vào `generate_with_citation(..., chat_history=...)`. |
+| UI/UX source + score | Done | Chatbot hiển thị source chunks, document type, retrieval source và score. |
+| Deploy-ready | Ready | Repo có Streamlit app, requirements và Hugging Face Spaces front matter; deploy thật sẽ cộng tối đa thêm 4 điểm. |
 
 ---
 

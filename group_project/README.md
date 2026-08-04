@@ -70,7 +70,29 @@ Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục
 ## Kiến Trúc Hệ Thống
 
 ```
-[Vẽ diagram kiến trúc ở đây]
+User question
+    |
+    v
+Streamlit Chat UI (app.py)
+    |
+    v
+Task 10: generate_with_citation()
+    |
+    v
+Task 9: Retrieval Pipeline
+    |-- Task 5: Semantic Search
+    |-- Task 6: BM25 Lexical Search
+    |-- Task 7: RRF Reranking
+    `-- Task 8: PageIndex/Gemini fallback
+    |
+    v
+Context formatting + document reordering
+    |
+    v
+Gemini LLM answer with citations
+    |
+    v
+Answer + source chunks displayed in UI
 ```
 
 ---
@@ -79,11 +101,11 @@ Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục
 
 | Thành viên | MSSV | Nhiệm vụ | Trạng thái |
 |-----------|------|----------|------------|
-| Lê Trí Tùng | 2A202601458 | Task 9: Retrieval Pipeline; Task 10: Generation có Citation; điều phối tích hợp | In progress |
+| Lê Trí Tùng | 2A202601458 | Task 9: Retrieval Pipeline; Task 10: Generation có Citation; điều phối tích hợp | Done |
 | Vũ Xuân Anh | 2A202602010 | Task 1: Thu thập tài liệu; Task 2: Crawl bài viết | Done |
-| Nguyễn Quốc Bảo | 2A202601726 | Task 3: Convert Markdown; Task 4: Chunking & Indexing | In progress |
-| Đỗ Thị Thanh Loan | 2A202601654 | Task 5: Semantic Search; Task 6: Lexical Search BM25 | In progress |
-| Nguyễn Thuỳ Trang | 2A202601294 | Task 7: Reranking; Task 8: PageIndex Fallback | In progress |
+| Nguyễn Quốc Bảo | 2A202601726 | Task 3: Convert Markdown; Task 4: Chunking & Indexing | Done |
+| Đỗ Thị Thanh Loan | 2A202601654 | Task 5: Semantic Search; Task 6: Lexical Search BM25 | Done |
+| Nguyễn Thuỳ Trang | 2A202601294 | Task 7: Reranking; Task 8: PageIndex Fallback | Done |
 
 ---
 
@@ -95,9 +117,51 @@ pip install -r requirements.txt
 
 # Chạy app
 streamlit run app.py
-# hoặc
-chainlit run app.py
+
+# Chạy evaluation nhóm
+python -m group_project.evaluation.eval_pipeline
+
+# Chạy test cá nhân Task 1-10
+python -m pytest tests/test_individual.py -v
 ```
+
+---
+
+## Demo Live & Nộp Bài
+
+### Demo flow 5-8 phút
+
+1. Giới thiệu kiến trúc: data landing -> markdown -> chunk/index -> hybrid retrieval -> generation có citation.
+2. Mở chatbot bằng `streamlit run app.py`.
+3. Demo 3 câu hỏi:
+   - Shopee hỗ trợ những phương thức thanh toán nào?
+   - Hồ sơ đăng ký hộ kinh doanh cá thể cần những giấy tờ nào?
+   - Doanh thu bán hàng online bao nhiêu thì phải nộp thuế?
+4. Mở expander nguồn tham khảo để chỉ ra citation và source chunks.
+5. Chạy hoặc mở `group_project/evaluation/results.md` để trình bày A/B evaluation.
+
+### Checklist nộp bài
+
+- [x] Task 1-10 pass automated tests.
+- [x] Chatbot UI tích hợp `generate_with_citation()`.
+- [x] Golden dataset có 15 câu hỏi.
+- [x] Evaluation pipeline chạy được.
+- [x] Báo cáo `group_project/evaluation/results.md` có bảng điểm A/B, worst performers và recommendations.
+- [x] README có kiến trúc, phân công, hướng dẫn chạy và demo flow.
+
+---
+
+## Bonus Đã Implement
+
+| Bonus | Điểm | Minh chứng |
+|-------|------|------------|
+| Giải thích cơ chế lexical search/BM25 | +5 | `src/task6_lexical_search.py` có BM25 fallback tự implement, giải thích TF/IDF, k1, b và length normalization. |
+| Query Expansion / HyDE-lite | +5 | `src/task9_retrieval_pipeline.py` có `expand_query()` và `generate_hypothetical_document()` trước khi hybrid retrieval. |
+| Conversation memory | +3 | `app.py` có toggle memory, truyền lịch sử chat vào `generate_with_citation(..., chat_history=...)`. |
+| UI/UX hiển thị source, score, retrieval source | +3 | Streamlit expander hiển thị từng source chunk, type, score và nguồn retrieval `hybrid/pageindex/dense`. |
+| Deploy-ready Streamlit app | tối đa +4 nếu deploy thật | Repo có `app.py`, `requirements.txt`, README front matter Hugging Face Spaces; chỉ cần push lên Space/Render để lấy URL public. |
+
+Điểm kỳ vọng sau bonus nếu demo mượt: khoảng 95-98/100, tùy việc có URL deploy online thật hay không.
 
 ---
 

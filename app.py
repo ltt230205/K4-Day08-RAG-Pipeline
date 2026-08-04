@@ -11,9 +11,20 @@ import sys
 from pathlib import Path
 
 import streamlit as st
-from dotenv import load_dotenv
 
-load_dotenv()
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv()
+except ImportError:
+    env_path = Path(__file__).parent / ".env"
+    if env_path.exists():
+        for line in env_path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 # Thêm project root vào sys.path để import các task từ src/
 PROJECT_ROOT = Path(__file__).parent
@@ -55,6 +66,7 @@ with st.sidebar:
     st.divider()
     st.subheader("⚙️ Thiết lập")
     top_k = st.slider("Số chunks retrieval (top_k)", 3, 10, 5)
+    use_memory = st.toggle("Conversation memory", value=True)
 
     st.divider()
     st.caption("**Kiến trúc hệ thống:**")
@@ -87,7 +99,8 @@ for msg in st.session_state.messages:
                     source_name = meta.get("source", "Unknown")
                     doc_type = meta.get("type", "unknown")
                     score = src.get("score", 0)
-                    st.markdown(f"**[{i}] {source_name}** `{doc_type}` | score: `{score:.4f}`")
+                    retrieval = src.get("source", "hybrid")
+                    st.markdown(f"**[{i}] {source_name}** `{doc_type}` `{retrieval}` | score: `{score:.4f}`")
                     st.text(src.get("content", "")[:300] + "...")
                     st.divider()
 
@@ -110,26 +123,20 @@ if query:
     with st.chat_message("assistant"):
         with st.spinner("Đang tìm kiếm tài liệu và tổng hợp câu trả lời..."):
             try:
-                # TODO (Học viên): Tích hợp hàm sinh câu trả lời từ Task 10
-                # Ví dụ:
-                # from src.task10_generation import generate_with_citation
-                # response = generate_with_citation(query, top_k=top_k)
-                # answer = response["answer"]
-                # sources = response.get("sources", [])
-
                 from src.task10_generation import generate_with_citation
-                response = generate_with_citation(query, top_k=top_k)
+                history = st.session_state.messages[:-1] if use_memory else []
+                response = generate_with_citation(query, top_k=top_k, chat_history=history)
                 answer = response.get("answer", "Chưa thể trả lời.")
                 sources = response.get("sources", [])
+                retrieval_source = response.get("retrieval_source", "unknown")
 
-            except NotImplementedError:
-                answer = "⚠️ **Task 10 chưa được implement.** Hãy hoàn thành `src/task10_generation.py` để kết nối pipeline vào UI!"
-                sources = []
             except Exception as e:
                 answer = f"❌ **Lỗi khi chạy RAG Pipeline:** {e}"
                 sources = []
+                retrieval_source = "error"
 
             st.markdown(answer)
+            st.caption(f"Retrieval source: `{retrieval_source}` | Memory: `{'on' if use_memory else 'off'}`")
 
             if sources:
                 with st.expander(f"📚 Nguồn tham khảo ({len(sources)} chunks)"):
@@ -138,7 +145,8 @@ if query:
                         source_name = meta.get("source", "Unknown")
                         doc_type = meta.get("type", "unknown")
                         score = src.get("score", 0)
-                        st.markdown(f"**[{i}] {source_name}** `{doc_type}` | score: `{score:.4f}`")
+                        retrieval = src.get("source", "hybrid")
+                        st.markdown(f"**[{i}] {source_name}** `{doc_type}` `{retrieval}` | score: `{score:.4f}`")
                         st.text(src.get("content", "")[:300] + "...")
                         st.divider()
 

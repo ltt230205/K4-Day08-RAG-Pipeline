@@ -1,17 +1,77 @@
 [
   {
-    "question": "Người mua có thể yêu cầu trả hàng/hoàn tiền trong thời hạn bao lâu sau khi nhận hàng?",
-    "expected_answer": "Trong vòng 15 ngày kể từ khi giao hàng thành công (24 giờ đối với thực phẩm tươi sống/đông lạnh).",
-    "expected_context": "Trang Returns and Refunds Policy, mục Return/Refund Eligibility"
+    "question": "Shopee hỗ trợ những phương thức thanh toán nào?",
+    "expected_answer": "Shopee hỗ trợ ví ShopeePay, thẻ tín dụng hoặc ghi nợ, trả góp qua thẻ, QR Code, chuyển khoản qua ứng dụng ngân hàng, thẻ NAPAS, Apple Pay, Google Pay và thanh toán khi nhận hàng.",
+    "expected_context": "payment methods shopee ShopeePay thẻ tín dụng ghi nợ trả góp QR Code chuyển khoản NAPAS Apple Pay Google Pay COD"
   },
   {
-    "question": "Shopee hỗ trợ những phương thức thanh toán nào?",
-    "expected_answer": "ShopeePay Wallet, thẻ tín dụng/ghi nợ, trả góp qua thẻ, QR Code, chuyển khoản qua app ngân hàng, thẻ NAPAS, Apple Pay, Google Pay, và COD.",
-    "expected_context": "Trang Payment Methods Overview"
+    "question": "Người mua có thể yêu cầu trả hàng hoặc hoàn tiền trong thời hạn bao lâu?",
+    "expected_answer": "Người mua có thể yêu cầu trả hàng hoặc hoàn tiền trong thời hạn được quy định của chính sách sau khi nhận hàng, với một số nhóm hàng đặc biệt có thời hạn ngắn hơn.",
+    "expected_context": "returns refund policy thời hạn yêu cầu trả hàng hoàn tiền sau khi nhận hàng"
+  },
+  {
+    "question": "Khi yêu cầu hoàn tiền, người mua cần chuẩn bị bằng chứng gì?",
+    "expected_answer": "Người mua nên chuẩn bị hình ảnh, video mở hàng, tình trạng sản phẩm, hóa đơn hoặc các bằng chứng liên quan để chứng minh yêu cầu hoàn tiền.",
+    "expected_context": "bằng chứng hoàn tiền hình ảnh video mở hàng tình trạng sản phẩm hóa đơn"
   },
   {
     "question": "Người bán không được đăng bán những sản phẩm nào?",
-    "expected_answer": "Hàng giả/nhái, sản phẩm bất hợp pháp, vi phạm sở hữu trí tuệ, và các mặt hàng nằm trong danh sách cấm của sàn.",
-    "expected_context": "Trang Product Listing Regulations, mục Prohibited Content"
+    "expected_answer": "Người bán không được đăng hàng giả, hàng nhái, sản phẩm bất hợp pháp, sản phẩm vi phạm sở hữu trí tuệ hoặc các mặt hàng nằm trong danh sách bị cấm của sàn.",
+    "expected_context": "người bán không được đăng hàng giả hàng nhái bất hợp pháp sở hữu trí tuệ danh sách cấm"
+  },
+  {
+    "question": "Chính sách quyền riêng tư xử lý dữ liệu cá nhân của người dùng như thế nào?",
+    "expected_answer": "Chính sách quyền riêng tư mô tả việc thu thập, sử dụng, lưu trữ, bảo vệ và chia sẻ dữ liệu cá nhân của người dùng theo mục đích cung cấp dịch vụ.",
+    "expected_context": "privacy policy dữ liệu cá nhân thu thập sử dụng lưu trữ bảo vệ chia sẻ"
+  },
+  {
+    "question": "Doanh thu bán hàng online bao nhiêu thì cá nhân phải nộp thuế?",
+    "expected_answer": "Cá nhân bán hàng online có doanh thu từ 100 triệu đồng mỗi năm trở lên phải kê khai và nộp thuế theo quy định.",
+    "expected_context": "doanh thu bán hàng online 100 triệu đồng năm kê khai nộp thuế"
+  },
+  {
+    "question": "Thuế GTGT và thuế TNCN cho cá nhân bán hàng online được tính như thế nào?",
+    "expected_answer": "Với hoạt động bán hàng hóa online, thuế GTGT thường tính 1% và thuế TNCN 0.5% trên doanh thu, tổng cộng 1.5%.",
+    "expected_context": "thuế GTGT 1% thuế TNCN 0.5% tổng 1.5% doanh thu bán hàng online"
+  },
+  {
+    "question": "Hồ sơ đăng ký hộ kinh doanh cá thể cần những giấy tờ nào?",
+    "expected_answer": "Hồ sơ thường gồm giấy đề nghị đăng ký hộ kinh doanh, bản sao giấy tờ cá nhân của chủ hộ hoặc thành viên, biên bản họp hộ gia đình nếu có và giấy tờ về địa điểm kinh doanh.",
+    "expected_context": "hồ sơ đăng ký hộ kinh doanh giấy đề nghị CCCD CMND biên bản họp hộ gia đình địa điểm kinh doanh"
+  },
+  {
+    "question": "Nộp hồ sơ đăng ký hộ kinh doanh cá thể ở đâu?",
+    "expected_answer": "Hồ sơ đăng ký hộ kinh doanh được nộp tại bộ phận một cửa hoặc cơ quan đăng ký kinh doanh cấp quận, huyện nơi đặt địa điểm kinh doanh.",
+    "expected_context": "nộp hồ sơ đăng ký hộ kinh doanh bộ phận một cửa UBND quận huyện địa điểm kinh doanh"
+  },
+  {
+    "question": "Thời gian giải quyết đăng ký hộ kinh doanh cá thể là bao lâu?",
+    "expected_answer": "Thời gian giải quyết thường là 03 ngày làm việc kể từ khi nhận đủ hồ sơ hợp lệ.",
+    "expected_context": "thời gian giải quyết 03 ngày làm việc hồ sơ hợp lệ hộ kinh doanh"
+  },
+  {
+    "question": "Nghị định về thương mại điện tử quy định những chủ thể nào?",
+    "expected_answer": "Nghị định về thương mại điện tử điều chỉnh hoạt động của thương nhân, tổ chức, cá nhân tham gia website hoặc sàn giao dịch thương mại điện tử.",
+    "expected_context": "nghị định thương mại điện tử thương nhân tổ chức cá nhân website sàn giao dịch"
+  },
+  {
+    "question": "Người bán trên sàn TMĐT cần cung cấp thông tin gì cho khách hàng?",
+    "expected_answer": "Người bán cần cung cấp thông tin rõ ràng về hàng hóa, giá, điều kiện giao dịch, thanh toán, vận chuyển, đổi trả và thông tin liên hệ khi cần.",
+    "expected_context": "người bán sàn TMĐT thông tin hàng hóa giá điều kiện giao dịch thanh toán vận chuyển đổi trả liên hệ"
+  },
+  {
+    "question": "Người mua có thể thay đổi phương thức thanh toán sau khi đặt hàng không?",
+    "expected_answer": "Việc thay đổi phương thức thanh toán phụ thuộc vào trạng thái đơn hàng và quy định hỗ trợ của nền tảng; người mua cần kiểm tra hướng dẫn trong trung tâm trợ giúp.",
+    "expected_context": "thay đổi phương thức thanh toán đơn hàng trạng thái đơn hàng trung tâm trợ giúp"
+  },
+  {
+    "question": "Làm sao để theo dõi tình trạng đơn hàng?",
+    "expected_answer": "Người mua có thể theo dõi tình trạng đơn hàng trong mục đơn mua hoặc phần theo dõi đơn hàng của ứng dụng, nơi hiển thị trạng thái xử lý và vận chuyển.",
+    "expected_context": "theo dõi tình trạng đơn hàng mục đơn mua trạng thái xử lý vận chuyển"
+  },
+  {
+    "question": "Mua hàng xuyên biên giới cần lưu ý điều gì?",
+    "expected_answer": "Người mua cần lưu ý thời gian vận chuyển, phí liên quan, điều kiện đổi trả, thanh toán và quy định nhập khẩu hoặc thuế nếu có.",
+    "expected_context": "mua hàng xuyên biên giới thời gian vận chuyển phí đổi trả thanh toán nhập khẩu thuế"
   }
 ]

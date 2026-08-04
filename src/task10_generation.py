@@ -124,19 +124,41 @@ def _extractive_fallback_answer(query: str, chunks: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
+def _format_chat_history(chat_history: list[dict] | None, max_turns: int = 6) -> str:
+    if not chat_history:
+        return ""
+
+    recent = chat_history[-max_turns:]
+    lines = []
+    for message in recent:
+        role = message.get("role", "user")
+        content = " ".join(str(message.get("content", "")).split())
+        if content:
+            lines.append(f"{role}: {content[:500]}")
+    return "\n".join(lines)
+
+
+def generate_with_citation(
+    query: str,
+    top_k: int = TOP_K,
+    chat_history: list[dict] | None = None,
+) -> dict:
     """
     End-to-end RAG generation with citation.
 
     Returns:
         {"answer": str, "sources": list[dict], "retrieval_source": str}
     """
-    chunks = retrieve(query, top_k=top_k)
+    history_text = _format_chat_history(chat_history)
+    retrieval_query = f"{history_text}\nCurrent question: {query}" if history_text else query
+    chunks = retrieve(retrieval_query, top_k=top_k)
     reordered = reorder_for_llm(chunks)
     context = format_context(reordered)
 
+    conversation_block = f"Conversation history:\n{history_text}\n\n" if history_text else ""
     prompt = (
         f"{SYSTEM_PROMPT}\n\n"
+        f"{conversation_block}"
         f"Context:\n{context}\n\n"
         "---\n\n"
         f"Question: {query}\n\n"
