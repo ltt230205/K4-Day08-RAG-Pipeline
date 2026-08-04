@@ -22,11 +22,23 @@ import os
 import re
 
 import requests
-from dotenv import load_dotenv
 
-load_dotenv()
+try:
+    from dotenv import load_dotenv
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+    load_dotenv()
+except ImportError:
+    env_path = os.path.join(os.path.dirname(__file__), "..", ".env")
+    if os.path.exists(env_path):
+        with open(env_path, encoding="utf-8") as env_file:
+            for line in env_file:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, value = line.split("=", 1)
+                os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GEMINI_Key") or os.getenv("GEMINI_KEY", "")
 GEMINI_MODEL = "gemini-flash-latest"
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
 
