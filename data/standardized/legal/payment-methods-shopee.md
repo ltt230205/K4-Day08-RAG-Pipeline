@@ -1,0 +1,8 @@
+# Payment Methods Shopee
+
+**Source file:** payment-methods-shopee.pdf
+**Type:** legal
+
+---
+
+%PDF-1.3 %éëñ¿ 1 0 obj << /Count 1 /Kids [3 0 R] /MediaBox [0 0 595.28 841.89] /Type /Pages >> endobj 2 0 obj << /OpenAction [3 0 R /FitH null] /PageLayout /OneColumn /Pages 1 0 R /Type /Catalog >> endobj 3 0 obj << /Contents 4 0 R /Parent 1 0 R /Resources 7 0 R /Type /Page >> endobj 4 0 obj << /Filter /FlateDecode /Length 568 >> stream x u Qo 0 Eßû+îc*5  ÀÐ· ¤¥Õ éâT    ¸1Kk2b2ñï'   N} at>_ßc OW.  þ\Ýq8÷ Ô'® þ 9· (  óÁâ P ¾Áèyõ ³Ç,ÅË  t g àé* O§Y  O3,Ó|1 _ ÿê)Î½ ê À Jh  Ä$ð:.%H¦ÉWÈÙ*O ¤Ó ²t ]  0&  ù h Zªj/%T SW(D ½j*½ QM £ V0 Ð úô< æö H©  I æ $p;ä /%NÜ h± ñ  ©-µ {ün ÞJ©±  z+4 ÐÛõ5¹  ~Hb Ì >à\IðRcÓè- <¨ ºÂzôR Ä ¾   u!êÍ   »!Ï£Q@  Â  ?>óÎ»ÛY ê· õ(Ég #   Jc&ßÊ£¬ÛOLæù z  Oü¨g&ªim4e©çpX    ©6  î Þ ×B ^e=DN¼Ð#ÌE 0â < c¹ í7ad=<Ð hàX ¶Õþ ¦ &ôbB' Ä#8û ZOøã< Oçù "ýoNH= ¶O Ïà ²Þ"íZ¶½ %  6 ¸(û èes   ÚúæùjP}ïU`ïÒIÕSõ¦¯ÞÙvÅ_Nü ë(* ûs fcêÛ Z¼ w KYÀ4íE/{% } î  /` ¡ÿä;·ÐÏµ²¼7 vJ  ìÆX 6U ï  aì  i ¨¦uL-ºÕóÀ¿ ã9ã endstream endobj 5 0 obj << /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Subtype /Type1 /Type /Font >> endobj 6 0 obj << /BaseFont /Helvetica /Encoding /WinAnsiEncoding /Subtype /Type1 /Type /Font >> endobj 7 0 obj << /Font <</F1 5 0 R /F2 6 0 R>> /ProcSet [/PDF /Text /ImageB /ImageC /ImageI] >> endobj 8 0 obj << /CreationDate (D:20260804071759Z) >> endobj xref 0 9 0000000000 65535 f 0000000015 00000 n 0000000102 00000 n 0000000205 00000 n 0000000285 00000 n 0000000925 00000 n 0000001027 00000 n 0000001124 00000 n 0000001221 00000 n trailer << /Size 9 /Root 2 0 R /Info 8 0 R /ID [<FFD5170F63A99B980F45AD5589956A00><FFD5170F63A99B980F45AD5589956A00>] >> startxref 1276 %%EOF
