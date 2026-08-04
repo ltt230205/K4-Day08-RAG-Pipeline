@@ -79,10 +79,11 @@ Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục
 
 | Thành viên | MSSV | Nhiệm vụ | Trạng thái |
 |-----------|------|----------|------------|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+| Lê Trí Tùng | 2A202601458 | Task 9: Retrieval Pipeline; Task 10: Generation có Citation; điều phối tích hợp | In progress |
+| Vũ Xuân Anh | 2A202602010 | Task 1: Thu thập tài liệu; Task 2: Crawl bài viết | Done |
+| Nguyễn Quốc Bảo | 2A202601726 | Task 3: Convert Markdown; Task 4: Chunking & Indexing | In progress |
+| Đỗ Thị Thanh Loan | 2A202601654 | Task 5: Semantic Search; Task 6: Lexical Search BM25 | In progress |
+| Nguyễn Thuỳ Trang | 2A202601294 | Task 7: Reranking; Task 8: PageIndex Fallback | In progress |
 
 ---
 
